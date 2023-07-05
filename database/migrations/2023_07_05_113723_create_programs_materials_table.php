@@ -11,9 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('grades', function (Blueprint $table) {
+        Schema::create('programs_materials', function (Blueprint $table) {
             $table->unsignedBigInteger('program_id')->nullable();
             $table->foreign('program_id')->references('id')->on('programs')->onDelete('restrict');
+            $table->unsignedBigInteger('material_id')->nullable();
+            $table->foreign('material_id')->references('id')->on('materials')->onDelete('restrict');
+            $table->primary(['program_id', 'material_id']);
+            $table->timestamps();
         });
     }
 
@@ -22,9 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('grades', function (Blueprint $table) {
-            $table->dropForeign(['program_id']);
-            $table->dropColumn('program_id');
-        });
+        Schema::dropIfExists('programs_materials');
     }
 };
