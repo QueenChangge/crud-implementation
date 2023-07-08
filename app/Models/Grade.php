@@ -11,4 +11,20 @@ class Grade extends Model
     protected $guarded = [
         'id'
     ];
+
+
+
+
+
+
+    public function program()
+    {
+        return $this->belongsTo(Program::class);
+    }
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'grade_id');
+    }
+
 }

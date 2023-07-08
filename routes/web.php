@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GroupdashController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,8 @@ Route::middleware(['auth'])->group(function () {
 
 
     Route::get('/dashboard/materials/modify', [DashboardController::class, 'materialsModifyPage']);
+
+    Route::get('/dashboard/group/list', [GroupdashController::class, 'index']);
 
 
 
