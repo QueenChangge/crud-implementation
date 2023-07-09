@@ -265,7 +265,7 @@ class DashboardController extends Controller
             'icon' => 'required',
         ]);
         
-        $material = Material::create($request->all());
+        Material::create($request->all());
 
 
         Session::flash('status', 'Success');
@@ -284,13 +284,32 @@ class DashboardController extends Controller
         ]);
     }
 
-    public function materialsUpdate()
+    public function materialsUpdatePage($id)
     {
-        $materials = Material::all();
-        
+
+        $material = Material::findOrFail($id);
         return view('dashboard.materials-updatepage', [
-            'materials' => $materials
+            'material' => $material
         ]);
+    }
+
+    public function materialsUpdate(Request $request, $id)
+    {
+        $material = Material::findOrFail($id);
+        $material->fill([
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image,
+            'icon' => $request->icon
+
+
+        ]);
+        $material->save();
+
+        Session::flash('status', 'Success');
+        Session::flash('message', 'Successfully Updated Material '. $material->title);
+    
+        return redirect('/dashboard/materials/modify');
     }
 }
 

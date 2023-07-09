@@ -56,7 +56,7 @@
             </select>
           </div>
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
-          <button class="btn btn-dark">Cancel</button>
+          <a href="/dashboard/modify" class="btn btn-dark">Cancel</a>
         </form>
       </div>
     </div>

@@ -11,7 +11,7 @@
             <img src="/adminku/assets/images/dashboard/Group126@2x.png" class="gradient-corona-img img-fluid" alt="">
           </div>
           <div class="col-5 col-sm-7 col-xl-8 p-0">
-            <h2 class="mb-1 mb-sm-0">MATERIALS - MODIFY</h2>
+            <h2 class="mb-1 mb-sm-0">GROUP - MODIFY</h2>
           </div>
           <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
             <span>
@@ -28,7 +28,7 @@
 <div class="col-lg-12 grid-margin stretch-card">
   <div class="card">
     <div class="card-body">
-      <h4 class="card-title">MATERIAL UPDATE</h4> 
+      <h4 class="card-title">GROUP UPDATE</h4> 
       @if (session('status'))
       <div class="alert alert-success">
         {{session('message')}}
@@ -40,24 +40,23 @@
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Title</th>
-              <th scope="col">image</th>
-              <th scope="col">Detail</th>
+              <th scope="col">Name</th>
+              <th scope="col">Class Meeting</th>
               
               {{-- <th scope="col">Program</th> --}}
             </tr>
           </thead>
           <tbody>
-            @foreach ($materials as $material)
+            @foreach ($groups as $group)
             <tr>
               <td scope="row">{{$loop->iteration}}</td>
-              <td>{{$material->title}}</td>
-              <td>{{$material->image}}</td>
+              <td>{{$group->name}}</td>
+              <td>{{$group->class_meeting}}</td>
               <td>
-                <a href="/dashboard/materials/modify/edit/{{$material->id}}" type="button" class="btn btn-warning btn-icon-text mb-2">
+                <a href="/dashboard/group/modify/edit/{{$group->id}}" type="button" class="btn btn-warning btn-icon-text mb-2">
                   <i class="mdi mdi-reload btn-icon-prepend"></i> Edit </a>
 
-                  <form action="/dashboard/materials/modify/delete/{{$material->id}}" method="POST">
+                  <form action="/dashboard/group/modify/delete/{{$group->id}}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit" class="btn btn-danger btn-icon-text">

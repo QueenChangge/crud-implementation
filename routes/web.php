@@ -53,19 +53,34 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard/approving/{id}', [DashboardController::class, 'confirmed'])->middleware('CheckUserAccess');
     Route::put('/dashboard/approving/{id}', [DashboardController::class, 'updateConfirmed'])->middleware('CheckUserAccess');
 
+
+
+
+
+    // ---------------------------------------------------------------
     Route::get('/dashboard/materials/list', [DashboardController::class, 'materialsPage']);
     Route::get('/dashboard/materials/list/{id}', [DashboardController::class, 'materialsDetail']);
     Route::get('/dashboard/materials/create', [DashboardController::class, 'materialsCreatePage']);
     Route::post('/dashboard/materials/create', [DashboardController::class, 'materialsCreate']);
 
-
-    Route::post('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialssUpdate']);
-
-
     Route::get('/dashboard/materials/modify', [DashboardController::class, 'materialsModifyPage']);
+    Route::get('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdatePage']);
+    Route::put('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdate']);
 
+
+
+// ---------------------------------------------------------------------
+// GROUP FULL
     Route::get('/dashboard/group/list', [GroupdashController::class, 'index']);
+    Route::get('/dashboard/group/list/{id}', [GroupdashController::class, 'groupDetail']);
 
+    Route::get('/dashboard/group/create', [GroupdashController::class, 'groupCreatePage']);
+    Route::post('/dashboard/group/create', [GroupdashController::class, 'groupCreate']);
+
+    Route::get('/dashboard/group/modify', [GroupdashController::class, 'groupModifyPage']);
+    Route::get('/dashboard/group/modify/edit/{id}', [GroupdashController::class, 'updatePage']);
+    Route::put('/dashboard/group/modify/edit/{id}', [GroupdashController::class, 'groupUpdate']);
+    Route::delete('/dashboard/group/modify/delete/{id}', [GroupdashController::class, 'groupDelete']);
 
 
     Route::get('/dashboard/profile/{id}', [ProfileController::class, 'index']);

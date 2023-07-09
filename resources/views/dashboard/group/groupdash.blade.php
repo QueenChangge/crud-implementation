@@ -14,10 +14,10 @@
           </div>
           <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
             <span>
-              <a href="/dashboard/materials/create" class="btn btn-outline-light btn-rounded get-started-btn">Create</a>
+              <a href="/dashboard/group/create" class="btn btn-outline-light btn-rounded get-started-btn">Create</a>
             </span>
             <span>
-              <a href="/dashboard/materials/modify" class="btn btn-outline-light btn-rounded get-started-btn">Modify</a>
+              <a href="/dashboard/group/modify" class="btn btn-outline-light btn-rounded get-started-btn">Modify</a>
             </span>
           </div>
         </div>
@@ -48,9 +48,10 @@
                 <tr>
                     <td scope="row">{{$loop->iteration}}</td>
                     <td>{{$grade->name}}</td>
-                    @foreach ($grade->user as $user)
+                    {{-- @foreach ($grade->user as $user)
                         <td>{{$user->count()}}</td>
-                    @endforeach
+                    @endforeach --}}
+                    <td>{{$grade->user->count()}}</td>
                     <td>-</td>
                     <td>{{$grade->program ? $grade->program->name : "-"}}</td>
                   </tr>
