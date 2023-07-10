@@ -17,7 +17,6 @@ class DashboardController extends Controller
         ->where('role_id', 2)
         ->where('status', 'active')
         ->whereNotNull('program_id')
-        ->whereNotNull('grade_id')
         ->paginate(7);
 
         return view ('dashboard.students', [
@@ -32,7 +31,6 @@ class DashboardController extends Controller
                     ->where('role_id', 2)
                     ->where('status', 'active')
                     ->whereNotNull('program_id')
-                    ->whereNotNull('grade_id')
                     ->paginate(7);
         return view('dashboard.students', [
             'users' => $users
@@ -78,7 +76,6 @@ class DashboardController extends Controller
         $users = User::where('role_id', 2)
                 ->where('status', 'active')
                 ->whereNotNull('program_id')
-                ->whereNotNull('grade_id')
                 ->get();
 
         return view('dashboard.students-modify', [
@@ -88,13 +85,11 @@ class DashboardController extends Controller
 
     public function modif($id){
         $programs = Program::all();
-        $grades = Grade::all();
         // $programs = Program::pluck('name');
         $user = User::findOrFail($id);
         return view('dashboard.students-datamodif', [
             'user' => $user,
             'programs' => $programs,
-            'grades' => $grades
         ]);
     }
 
@@ -135,7 +130,6 @@ class DashboardController extends Controller
             'address' => $request->address,
             'evidence' => $request->evidence,
             'program_id' => $request->program_id,
-            'grade_id' => $request->grade_id
 
 
 
@@ -186,7 +180,6 @@ class DashboardController extends Controller
 
     public function approvPage(){
         $users = User::where('status', 'in progress')
-            ->where('grade_id', null)
             ->where('program_id', null)
             // ->where('role_id', 2)
             ->get();

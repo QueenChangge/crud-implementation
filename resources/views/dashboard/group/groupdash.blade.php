@@ -39,7 +39,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Name</th>
                   <th scope="col">Numbers of Person</th>
-                  <th scope="col">Class Meeting</th>
+                  {{-- <th scope="col">Class Meeting</th> --}}
                   <th scope="col">Program</th>
                 </tr>
               </thead>
@@ -47,12 +47,15 @@
                 @foreach ($grades as $grade)
                 <tr>
                     <td scope="row">{{$loop->iteration}}</td>
-                    <td>{{$grade->name}}</td>
+                    <td><a href="/dashboard/group/list/{{$grade->id}}">{{$grade->name}}</a></td>
+                    <td>{{$grade->program->user->count()}}</td>
+                    {{-- @foreach ($grade->program->user as $user)
+                    {{$user->fullname}}
+                    @endforeach --}}
                     {{-- @foreach ($grade->user as $user)
                         <td>{{$user->count()}}</td>
                     @endforeach --}}
-                    <td>{{$grade->user->count()}}</td>
-                    <td>-</td>
+                    {{-- <td>{{$grade->user->count()}}</td> --}}
                     <td>{{$grade->program ? $grade->program->name : "-"}}</td>
                   </tr>
                   

@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Session;
 class GroupdashController extends Controller
 {
     public function index(){
-        $grades = Grade::with('user')->get();
+        // $grades = Grade::with('user')->get();
+        $grades = Grade::all();
+
         // $users = $grades->user;
         return view('dashboard.group.groupdash', 
     ['grades' => $grades]);
@@ -96,5 +98,13 @@ class GroupdashController extends Controller
             Session::flash('status', 'Success');
             Session::flash('message', 'Group Dissapeared');
         }
+    }
+
+
+    public function groupDetail($id){
+        $group = Grade::findOrFail($id);
+        return view('dashboard.group.groupdetail', [
+            'group' => $group
+        ]);
     }
 }

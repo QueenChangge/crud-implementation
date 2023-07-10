@@ -35,6 +35,8 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 // DASHBOARD AUTH
 Route::middleware(['auth'])->group(function () {
+
+    //STUDENT FULL
     Route::get('/dashboard/students/list', [DashboardController::class, 'index']);
     Route::get('/dashboard/students/filter', [DashboardController::class, 'filterIndex']);
 
@@ -56,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 
-
+    //MATERIAL FULL
     // ---------------------------------------------------------------
     Route::get('/dashboard/materials/list', [DashboardController::class, 'materialsPage']);
     Route::get('/dashboard/materials/list/{id}', [DashboardController::class, 'materialsDetail']);

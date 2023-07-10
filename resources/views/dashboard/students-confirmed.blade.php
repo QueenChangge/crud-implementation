@@ -14,6 +14,9 @@
             <label for="program_id">Program</label>
             <select class="form-control" id="program_id" name="program_id" value="{old('program_id')}">
               <option selected disabled>Choose program</option>
+              {{-- @foreach ($programs as $program)
+                  <option value="{{$program->id}}">{{$program->name}}</option>
+              @endforeach --}}
               @foreach ($programs as $program)
                   <option value="{{$program->id}}">{{$program->name}}</option>
               @endforeach
@@ -22,13 +25,18 @@
           <div class="form-group">
             <label for="grade_id">Grade</label>
             <select class="form-control" id="grade_id" name="grade_id" value="{old('grade_id')}">
-              <option selected disabled>Choose program</option>
-              @foreach ($grades as $grade)
+              <option selected disabled>Choose group</option>
+              {{-- @foreach ($grades as $grade)
                   <option value="{{$grade->id}}">{{$grade->name}}</option>
+              @endforeach --}}
+              @foreach ($programs as $program)
+                  @foreach ($program->grade as $grade)
+                    <option value="{{$grade->id}}">{{$grade->name}}</option>
+                  @endforeach
               @endforeach
+              
             </select>
           </div>
-          
           <div class="form-check form-check-flat form-check-primary">
             <label class="form-check-label">
               <input type="checkbox" name="status" id="status" value="active" class="form-check-input" checked> Activated Account </label>

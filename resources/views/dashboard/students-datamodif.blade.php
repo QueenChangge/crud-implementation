@@ -40,13 +40,12 @@
           <div class="form-group">
             <label for="program_id">Program</label>
             <select class="form-control" id="program_id" name="program_id" value="{{old('program_id', $user->program_id)}}">
-              <option selected disabled>{{old('program_id', $user->program->name)}}</option>
               @foreach ($programs as $program)
-                  <option value="{{$program->id}}">{{$program->name}}</option>
+                  <option value="{{$program->id}}" @if(old('program_id', $user->program_id) == $program->id) selected @endif">{{$program->name}}</option>
               @endforeach
             </select>
           </div>
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="grade_id">Class</label>
             <select class="form-control" id="grade_id" name="grade_id" value="{{old('grade_id', $user->grade_id)}}">
               <option selected disabled>{{old('grade_id', $user->grade->name)}}</option>
@@ -54,7 +53,7 @@
                   <option value="{{$grade->id}}">{{$grade->name}}</option>
               @endforeach
             </select>
-          </div>
+          </div> --}}
           <button type="submit" class="btn btn-primary mr-2">Submit</button>
           <a href="/dashboard/modify" class="btn btn-dark">Cancel</a>
         </form>

@@ -11,4 +11,17 @@ class Program extends Model
     protected $guarded = [
         'id'
     ];
+
+
+
+
+
+    public function user()
+    {
+        return $this->hasMany(User::class, 'program_id');
+    }
+    public function grade()
+    {
+        return $this->hasMany(Grade::class, 'program_id');
+    }
 }
