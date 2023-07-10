@@ -185,10 +185,10 @@ class DashboardController extends Controller
 
 
     public function approvPage(){
-        $users = User::where('role_id', 2)
-            ->where('status', 'in progress')
-            // ->orWhere('program_id', null)
-            // ->orWhere('grade_id', null)
+        $users = User::where('status', 'in progress')
+            ->where('grade_id', null)
+            ->where('program_id', null)
+            // ->where('role_id', 2)
             ->get();
 
         return view('dashboard.students-approving', [
