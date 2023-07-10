@@ -6,6 +6,8 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupdashController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +35,27 @@ Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
 Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 
 
+// PROSES PENGIRIMAN EMAIL VERIFIKASI
+    //jika user mulai register akan diarahkan ke /email/verify
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->middleware('auth')->name('verification.notice');
+
+    //jika user sudah memverifikasi akun di email maka db email verified at akan terisi dan diarahkan ke route tujuan
+    Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+        $request->fulfill();
+     
+        return redirect('/notActivated'); //udah terverifikasi tapi akun belum aktif
+    })->middleware(['auth', 'signed'])->name('verification.verify');
+
+    Route::get('/notActivated', function(){
+        return "Your Account has not activated yet, please contact admin";
+    })->middleware(['auth', 'verified']);
+
+
 // DASHBOARD AUTH
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
+    
 
     //STUDENT FULL
     Route::get('/dashboard/students/list', [DashboardController::class, 'index']);

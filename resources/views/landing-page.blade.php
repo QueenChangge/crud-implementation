@@ -34,6 +34,21 @@
 
 <body>
     <div class="container-xxl bg-white p-0">
+        @if (session('status'))
+              <div class="alert alert-danger">
+                {{session('message')}}
+              </div>
+
+                @endif
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                    </ul>
+                </div>
+                @endif
         <!-- Spinner Start -->
         <div id="spinner" class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
             <div class="spinner-grow text-primary" style="width: 3rem; height: 3rem;" role="status">

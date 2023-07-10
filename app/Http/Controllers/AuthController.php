@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Session;
 
 class AuthController extends Controller
@@ -41,7 +42,11 @@ class AuthController extends Controller
         $hashPassword = Hash::make($request->password);
         $request['password'] = $hashPassword;
 
-        User::create($request->all());
+        $user = User::create($request->all());
+        //proses verifikasi email
+        event(new Registered($user));
+        // dd('masuk');
+        Auth::login($user);
 
         return redirect('/login');
     }
