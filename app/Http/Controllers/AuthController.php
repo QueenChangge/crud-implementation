@@ -45,10 +45,10 @@ class AuthController extends Controller
         $user = User::create($request->all());
         //proses verifikasi email
         event(new Registered($user));
-        // dd('masuk');
+        // // dd('masuk');
         Auth::login($user);
-
-        return redirect('/login');
+        
+        return redirect('/email/verify');
     }
 
     public function login(){

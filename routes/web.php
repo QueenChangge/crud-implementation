@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
@@ -44,13 +45,12 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
     //jika user sudah memverifikasi akun di email maka db email verified at akan terisi dan diarahkan ke route tujuan
     Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
         $request->fulfill();
-     
-        return redirect('/notActivated'); //udah terverifikasi tapi akun belum aktif
-    })->middleware(['auth', 'signed'])->name('verification.verify');
+        return redirect('/'); //udah terverifikasi tapi akun belum aktif
+    })->middleware(['auth','signed'])->name('verification.verify');
 
-    Route::get('/notActivated', function(){
-        return "Your Account has not activated yet, please contact admin";
-    })->middleware(['auth', 'verified']);
+    // Route::get('/notActivated', function(){
+    //     return "Your Account has not activated yet, please contact admin";
+    // })->middleware(['auth', 'verified']);
 
 
 // DASHBOARD AUTH
