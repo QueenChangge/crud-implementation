@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
@@ -106,8 +107,16 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/dashboard/group/modify/delete/{id}', [GroupdashController::class, 'groupDelete']);
 
 
+    // PROFILE FULL
+    // --------------------------------------------------------------
     Route::get('/dashboard/profile/{id}', [ProfileController::class, 'index']);
     Route::put('/dashboard/profile/update/{id}', [ProfileController::class, 'updateProfile']);
+
+
+
+    // CV
+    //-------------------------------------------------------------
+    Route::get('/dashboard/cv/input', [CVController::class, 'inputData']);
 
 });
 

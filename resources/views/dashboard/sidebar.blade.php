@@ -47,6 +47,20 @@
           </ul>
         </div>
       </li>
+      <li class="nav-item menu-items" style="margin-top:20px">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-multiple"></i>
+          </span>
+          <span class="menu-title">CV</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/cv/input">Input Data</a></li>
+          </ul>
+        </div>
+      </li>
       {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="/dashboard/materials">
           <span class="menu-icon">
