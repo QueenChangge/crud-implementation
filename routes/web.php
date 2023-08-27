@@ -117,6 +117,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     // CV
     //-------------------------------------------------------------
     Route::get('/dashboard/cv/input', [CVController::class, 'inputData']);
+    Route::post('/dashboard/cv/input', [CVController::class, 'storeData']);
+    Route::get('/dashboard/cv/download', [CVController::class, 'cvData']);
 
 });
 
