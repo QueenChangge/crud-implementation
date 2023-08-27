@@ -8955,14 +8955,13 @@ text-decoration: underline;
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Education</h2>
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled">
-								    <li class="mb-2">
-								        <div class="resume-degree font-weight-bold">Философию</div>
-								        <div class="resume-degree-time">2015 — 2019</div>
-								    </li>
-								    <li>
-								        <div class="resume-degree font-weight-bold">Культурологию</div>
-								        <div class="resume-degree-time">2019 — 2021</div>
-								    </li>
+                    @foreach (Auth::user()->civi->education as $edu)
+                    <li class="mb-2">
+                      <div class="resume-degree font-weight-bold">{{$edu->spesific_education}}</div>
+                      <div class="resume-degree-time">{{$edu->range_time}}</div>
+                  </li>
+                    @endforeach
+
 							    </ul>
 						    </div>
 					    </section>

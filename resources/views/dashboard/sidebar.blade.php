@@ -57,9 +57,14 @@
         </a>
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/cv/education">Education</a></li>
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/cv/experience">Experience</a></li>
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/cv/achievement">Achievement</a></li>
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/cv/skill">Skill</a></li>
             <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/cv/input">Input Data</a></li>
           </ul>
         </div>
+        
       </li>
       {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="/dashboard/materials">
