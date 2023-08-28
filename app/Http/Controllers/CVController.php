@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Civi;
 use App\Models\User;
+use App\Models\Course;
 use App\Models\Education;
 use App\Models\Experience;
 use App\Models\Achievement;
@@ -125,7 +126,9 @@ class CVController extends Controller
             'title' => 'required',
             'position' => 'required',
             'spesific_range_time' => 'required',
-            'responsibilities' => 'required',
+            'responsibility_1' => 'required',
+            'responsibility_2' => 'required',
+            'responsibility_3' => 'required'
         ]);
 
         $request['civi_id'] = Auth::user()->civi->id;
@@ -201,6 +204,53 @@ class CVController extends Controller
             Session::flash('message', 'Achievement Dissapeared');
 
             return redirect('/dashboard/cv/achievement');
+        }
+    }
+
+
+    // ----------------------------------------------
+
+    public function skill(){
+        $skills = Course::all();
+        // dd(Auth::user()->civi->id);
+
+        return view('dashboard.civi.civi-skill', [
+            'skills' => $skills
+        ]);
+    }
+
+    public function skillInput(Request $request){
+
+        $request->validate([
+            'name' => 'required',
+        ]);
+
+        $request['civi_id'] = Auth::user()->civi->id;
+
+        Course::create($request->all());
+
+        return redirect('/dashboard/cv/skill');
+
+    }
+
+    public function skillDelete($id){
+        $skill = Course::find($id);
+
+        if($skill)
+        {
+            $skill->delete();
+
+            Session::flash('status', 'Success');
+            Session::flash('message', 'Successfully Deleted skill');
+
+            return redirect('/dashboard/cv/skill');
+
+        } else{
+
+            Session::flash('status', 'Failed');
+            Session::flash('message', 'skill Dissapeared');
+
+            return redirect('/dashboard/cv/skill');
         }
     }
     

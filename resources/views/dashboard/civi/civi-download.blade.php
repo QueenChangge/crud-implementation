@@ -8791,14 +8791,14 @@ text-decoration: underline;
 							    <li><a><i class="fas fa-mobile-alt fa-fw mr-2 " data-fa-transform="grow-6"></i>{{Auth::user()->civi->phone_number}}</a></li>
 						    </ul>
 					    </div>
-					    <div class="secondary-info ml-md-auto mt-2">
+					    {{-- <div class="secondary-info ml-md-auto mt-2">
 						    <ul class="resume-social list-unstyled">
 				                <li class="mb-3"><a href="https://t-do.ru/shcok7"><span class="fa-container text-center mr-2"><i class="fab fa-telegram-plane fa-fw"></i></span>shcok7</a></li>
 				                <li class="mb-3"><a href="https://vk.com/id19720848"><span class="fa-container text-center mr-2"><i class="fab fa-vk fa-fw"></i></span>pspmaniys</a></li>
 				                <li class="mb-3"><a href="https://behance.net/twstrblg"><span class="fa-container text-center mr-2"><i class="fab fa-behance fa-fw"></i></span>twstrblg</a></li>
 				                <li><a href="https://psnprofiles.com/twisterblog"><span class="fa-container text-center mr-2"><i class="fab fa-playstation"></i></span>twisterblog</a></li>
 						    </ul>
-					    </div>
+					    </div> --}}
 				    </div>
 			    </div>
 		    </header>
@@ -8815,96 +8815,33 @@ text-decoration: underline;
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">EXPERIENCES</h2>
 						    <div class="resume-section-content">
 							    <div class="resume-timeline position-relative">
+                    @foreach (Auth::user()->civi->experience as $exp)
+                                            
+                    {{-- ------------------------- --}}
 								    <article class="resume-timeline-item position-relative pb-5">
-									    
 									    <div class="resume-timeline-item-header mb-2">
 										    <div class="d-flex flex-column flex-md-row">
-										        <h3 class="resume-position-title font-weight-bold mb-1">Редактором</h3>
+										        <h3 class="resume-position-title font-weight-bold mb-1">{{$exp->title}}</h3>
 										        <div class="resume-company-name ml-auto">
-										        ГК «Основа»</div>
+                              {{$exp->position}}</div>
 										    </div>
-										    <div class="resume-position-time">2018 — 2019</div>
+										    <div class="resume-position-time">{{$exp->spesific_range_time}}</div>
 									    </div><!--//resume-timeline-item-header-->
 									    <div class="resume-timeline-item-desc">
-										    <p>Делаю всё, что связано с соцсетями и текстами. Пишу рассылки и посты. Верстаю лендинги, перевожу пресс-релизы, делаю спецпроекты.</p>
+										    <p>Responsibilities :</p>
 										    <ul>
-											    <li><a href="https://vk.com/@russianimp-top-5-faktov-ob-internete-v-metro-vo-vremena-rossiiskoi-impe?ref=group_block" target="_blank">«Метро в Российской империи»</a></li>
-											    <li><a href="https://vk.com/russianimp?w=wall-44693766_143639" target="_blank">Смешные дореволюционные журналы</a></li>
-											    <li><a href="https://www.instagram.com/p/ByzmsdVopko/" target="_blank">Политические мемы</a></li>
+											    <li>{{$exp->responsibility_1}}</li>
+											    <li>{{$exp->responsibilitiy_2}}</li>
+											    <li>{{$exp->responsibilitiy_3}}</li>
+											    
 											 </ul>
 										</div>
+								    </article>
 
-								    </article>
-								    
-								    <article class="resume-timeline-item position-relative pb-5">
-									    
-									    <div class="resume-timeline-item-header mb-2">
-										    <div class="d-flex flex-column flex-md-row">
-										        <h3 class="resume-position-title font-weight-bold mb-1">Копирайтером</h3>
-										        <div class="resume-company-name ml-auto">Текстерра</div>
-										    </div>
-										    <div class="resume-position-time">2018 — 2019</div>
-									    </div>
-									    <div class="resume-timeline-item-desc">
-										    <p>Написал много текстов, разобрался в куче тем. Теперь не боюсь SEO-ключей и делаю вэнити-серч на заказ.</p>
-										     <ul>
-											    <li><a href="https://docs.google.com/document/d/1iklxr2ouDfpWy2oLBvaYV86htCMz92rsEYtqV0JmDsU/edit" target="_blank">Как протезировать зубы</a></li>
-											    <li><a href="https://docs.google.com/document/d/1aehTEK9_h4LxfCoUifVDXXIc8T3LOVgoZK6ITh_Fka4/edit" target="_blank">Зачем чистить кондиционеры</a></li>
-											    <li><a href="https://docs.google.com/document/d/1apokmN9otgZ2iSTMzgwElkuRLKS_QKM5G4WvHbT2iCM/edit" target="_blank">Почему Москва растёт на Юго-Запад</a></li>
-											 </ul>
-									    </div>
-								    </article>
-								    <article class="resume-timeline-item position-relative pb-5">
-									    <div class="resume-timeline-item-header mb-2">
-										    <div class="d-flex flex-column flex-md-row">
-										        <h3 class="resume-position-title font-weight-bold mb-1">Автором</h3>
-										        <div class="resume-company-name ml-auto">Мамихлапинатана</div>
-										    </div>
-										    <div class="resume-position-time">2019</div>
-									    </div>
-									    <div class="resume-timeline-item-desc">
-										    <p>Взял три интервью и написал на их основе текст в блог Mail.ru. </p>
-										   <ul>
-											    <li><a href="https://mcs.mail.ru/blog/ml-business/" target="_blank">Машинное обучение для торговли</a></li>
-											 </ul>
-									    </div>
-								    </article>
-								    <article class="resume-timeline-item position-relative">
-									    <div class="resume-timeline-item-header mb-2">
-										    <div class="d-flex flex-column flex-md-row">
-										        <h3 class="resume-position-title font-weight-bold mb-1">СММ</h3>
-										        <div class="resume-company-name ml-auto">Студенческие журналы</div>
-										    </div>
-										    <div class="resume-position-time">2015 — 2019</div>
-									    </div>
-									    <div class="resume-timeline-item-desc">
-										    <p>Руководил Телеграм-каналом, учил стажёров писать смешные посты, рисовал картинки и вёл прямые репортажи в одном студмедиа. Писал подборки, обзоры и переводил материалы в университетский академический журнал в другом </p>
-										    <ul>
-											    <li><a href="https://thevyshka.ru/16885-zasedanie-studsoveta-niu-vshe-tragediya-pgas/" target="_blank">Репортаж с заседания Студсовета</a></li>
-											    <li><a href="https://t-do.ru/thevyshka/2927" target="_blank">Инструкция к блокирующим оценкам</a></li>
-											    <li><a href="https://doxajournal.ru/translations/accelerate" target="_blank">Перевод книги Марка Фишера </a></li>
-											    <li><a href="https://thevyshka.ru/16885-zasedanie-studsoveta-niu-vshe-tragediya-pgas/" target="_blank">Рецензия на «Снежного человека»</a></li>
-											    <li><a href="https://doxa.tilda.ws/texts/reviews/games_05_10_17" target="_blank">Дайджест видеоигр в сентябре 2018</a></li>
-											 </ul>
-									    </div>
-								    </article>
-								    <article class="resume-timeline-item position-relative pb-5">
-									    <div class="resume-timeline-item-header mb-2">
-										    <div class="d-flex flex-column flex-md-row">
-										        <h3 class="resume-position-title font-weight-bold mb-1">И ещё раз автором</h3>
-										        <div class="resume-company-name ml-auto">IGM</div>
-										    </div>
-										    <div class="resume-position-time">2018</div>
-									    </div>
-									    <div class="resume-timeline-item-desc">
-										    <p>Сочинял подборки игр, описывал инфоповоды в игровой индустрии.</p>
-										   <ul>
-											    <li><a href="https://vk.com/@igm-igrovaya-impotenciya-top-samyh-unylyh-igr" target="_blank">Игровая импотенция</a></li>
-											    <li><a href="https://vk.com/@igm-geforce-gaming-celebration-na-gamescom-2018" target="_blank">Обзор мероприятия GeForce</a></li>
-											    <li><a href="https://vk.com/@igm-6-prichin-pochemu-my-vozvraschaemsya-v-igry" target="_blank">Исследование причин реиграбельности</a></li>
-											 </ul>
-									    </div>
-								    </article>
+                    {{-- -------------------------------- --}}
+                    
+                    @endforeach
+
 							    </div>
                   </body>
 							    
@@ -8971,17 +8908,16 @@ text-decoration: underline;
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">Achievements</h2>
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled resume-awards-list">
-								    <li class="mb-2 pl-4 position-relative">
-								        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-								        <div class="resume-award-name">Знаниями нейроэкономики</div>
-								        <div class="resume-award-desc"><a href="https://www.coursera.org/account/accomplishments/verify/DPCCM39K7M8F" target="_blank">Подтверждёнными сертификатом</a></div>
-								    </li>
-								    <li class="mb-0 pl-4 position-relative">
-								        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
-								        <div class="resume-award-name">Школой редакторов Бюро Горбунова</div>
-								        <div class="resume-award-desc"><a href="https://bureau.ru/burosfera/stas-zveryanov" target="_blank">И кабинетом в Бюросфере</a></div>
-								    </li>
-                                    
+                    {{-- @foreach (Auth::user()->civi->achievement as $ach)
+                        
+                    @endforeach --}}
+                    @foreach (Auth::user()->civi->achievement as $ach)
+                      <li class="mb-2 pl-4 position-relative">
+                        <i class="resume-award-icon fas fa-trophy position-absolute" data-fa-transform="shrink-2"></i>
+                        <div class="resume-award-name">{{$ach->name}}</div>
+                      </li>
+                    @endforeach
+                                 
 							    </ul>
 						    </div>
 					    </section>
@@ -8989,9 +8925,10 @@ text-decoration: underline;
 						    <h2 class="resume-section-title text-uppercase font-weight-bold pb-3 mb-3">SKILL</h2>
 						    <div class="resume-section-content">
 							    <ul class="list-unstyled resume-lang-list">
-								    <li class="mb-2"><span class="resume-lang-name font-weight-bold">Русском</span> <small class="text-muted font-weight-normal">(Он ведь родной)</small></li>
-								    <li class="mb-2 align-middle"><span class="resume-lang-name font-weight-bold">Английском</span> <small class="text-muted font-weight-normal">(С1)</small></li>
-								    <li><span class="resume-lang-name font-weight-bold">Немецком</span> <small class="text-muted font-weight-normal">(В1)</small></li>
+                    @foreach (Auth::user()->civi->course as $skl)
+                      <li class="mb-2"><span class="resume-lang-name font-weight-bold">{{$skl->name}}</span></li>
+                    @endforeach
+								    
 							    </ul>
 						    </div>
 					    </section>

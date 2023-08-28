@@ -128,11 +128,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::post('/dashboard/cv/achievement', [CVController::class, 'achievementInput']);
     Route::delete('/dashboard/cv/achievement-delete/{id}', [CVController::class, 'achievementDelete']);
 
+    Route::get('/dashboard/cv/skill', [CVController::class, 'skill']);
+    Route::post('/dashboard/cv/skill', [CVController::class, 'skillInput']);
+    Route::delete('/dashboard/cv/skill-delete/{id}', [CVController::class, 'skillDelete']);
+
 
     
-    Route::get('/dashboard/cv/skill', [CVController::class, 'skill']);
-
-
     Route::get('/dashboard/cv/input', [CVController::class, 'inputData']);
     Route::post('/dashboard/cv/input', [CVController::class, 'storeData']);
     Route::get('/dashboard/cv/download', [CVController::class, 'cvData']);

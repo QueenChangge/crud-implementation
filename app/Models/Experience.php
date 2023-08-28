@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Civi;
+use App\Models\Responsibility;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 

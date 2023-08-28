@@ -45,9 +45,21 @@
             </div>
           </div>
           <div class="form-group row">
-            <label for="responsibilities" class="col-sm-3 col-form-label">Responsibilities</label>
+            <label for="responsibility_1" class="col-sm-3 col-form-label">Responsibility 1</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="responsibilities" name="responsibilities" placeholder="">
+              <input type="text" class="form-control" id="responsibility_1" name="responsibility_1" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="responsibility_2" class="col-sm-3 col-form-label">Responsibility 2</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="responsibility_2" name="responsibility_2" placeholder="">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="responsibility_3" class="col-sm-3 col-form-label">Responsibility 3</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="responsibility_3" name="responsibility_3" placeholder="">
             </div>
           </div>
           
@@ -85,7 +97,7 @@
 
 @if ($expers != null)
 <div class="row">
-    <div class="col-lg-8 grid-margin stretch-card">
+    <div class="col-lg-12 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
           <h4 class="card-title">EDUCAITON LIST</h4>
@@ -98,7 +110,9 @@
                   <th scope="col">Title</th>
                   <th scope="col">Positon</th>
                   <th scope="col">Spesific Range Time</th>
-                  <th scope="col">Responsibilities</th>
+                  <th scope="col">Responsibility 1</th>
+                  <th scope="col">Responsibility 2</th>
+                  <th scope="col">Responsibility 3</th>
                   <th scope="col">Delete</th>
                 </tr>
               </thead>
@@ -109,7 +123,9 @@
                     <td>{{$exper->title}}</td>
                     <td>{{$exper->position}}</td>
                     <td>{{$exper->spesific_range_time}}</td>
-                    <td>{{$exper->responsibilities}}</td>
+                    <td>{{$exper->responsibility_1}}</td>
+                    <td>{{$exper->responsibility_2}}</td>
+                    <td>{{$exper->responsibility_3}}</td>
                     <td>
                           <form action="/dashboard/cv/experience-delete/{{$exper->id}}" method="POST">
                             @csrf
