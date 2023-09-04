@@ -34,14 +34,14 @@
           <input type="text" name="address" id="address" class="form-control" value="{{old('address', $user->address)}}">
         </div>
         <div class="form-group">
-          <label for="evidence">evidence</label>
+          <label for="evidence">Evidence</label>
           <input type="text" name="evidence" id="evidence" class="form-control" value="{{old('evidence', $user->evidence)}}">
         </div>
           <div class="form-group">
-            <label for="program_id">Program</label>
-            <select class="form-control" id="program_id" name="program_id" value="{{old('program_id', $user->program_id)}}">
-              @foreach ($programs as $program)
-                  <option value="{{$program->id}}" @if(old('program_id', $user->program_id) == $program->id) selected @endif">{{$program->name}}</option>
+            <label for="grade_id">Grade</label>
+            <select class="form-control" id="grade_id" name="grade_id" value="{{old('grade_id', $user->grade_id)}}">
+              @foreach ($grades as $grade)
+                  <option value="{{$grade->id}}" @if(old('grade_id', $user->grade_id) == $grade->id) selected @endif">{{$grade->name}}</option>
               @endforeach
             </select>
           </div>

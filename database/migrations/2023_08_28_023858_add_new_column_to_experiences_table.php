@@ -27,8 +27,10 @@ return new class extends Migration
         Schema::table('experiences', function (Blueprint $table) {
             $table->dropColumn('responsibilitiy_2');
             $table->dropColumn('responsibilitiy_3');
-
             $table->renameColumn('responsibility_1', 'responsibilities');
+
+            
+            
         });
     }
 };

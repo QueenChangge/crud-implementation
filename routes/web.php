@@ -5,6 +5,7 @@ use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupdashController;
@@ -57,39 +58,41 @@ Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
 // DASHBOARD AUTH
 Route::middleware(['auth', 'verified'])->group(function () {
     
-
+    Route::middleware('OnlyAdmin')->group(function () {
     //STUDENT FULL
-    Route::get('/dashboard/students/list', [DashboardController::class, 'index']);
-    Route::get('/dashboard/students/filter', [DashboardController::class, 'filterIndex']);
+        Route::get('/dashboard/students/list', [DashboardController::class, 'index']);
+        Route::get('/dashboard/students/filter', [DashboardController::class, 'filterIndex']);
 
-    Route::get('dashboard/students/create', [DashboardController::class, 'getCreate']);
-    Route::post('dashboard/students/create', [DashboardController::class, 'createStudent']);
-
-
-    Route::get('/dashboard/modify', [DashboardController::class, 'modifPage'])->name('dashboard.modify');
-    Route::get('/dashboard/modify/{id}', [DashboardController::class, 'modif'])->middleware('CheckUserAccess');
-    Route::put('/dashboard/modify/{id}', [DashboardController::class, 'modifUpdate'])->middleware('CheckUserAccess');
-    Route::delete('/dashboard/modify/delete/{id}', [DashboardController::class, 'modifDelete'])->middleware('CheckUserAccess');
+        Route::get('dashboard/students/create', [DashboardController::class, 'getCreate']);
+        Route::post('dashboard/students/create', [DashboardController::class, 'createStudent']);
 
 
+        Route::get('/dashboard/modify', [DashboardController::class, 'modifPage'])->name('dashboard.modify');
+        Route::get('/dashboard/modify/{id}', [DashboardController::class, 'modif'])->middleware('CheckUserAccess');
+        Route::put('/dashboard/modify/{id}', [DashboardController::class, 'modifUpdate'])->middleware('CheckUserAccess');
+        Route::delete('/dashboard/modify/delete/{id}', [DashboardController::class, 'modifDelete'])->middleware('CheckUserAccess');
 
-    Route::get('/dashboard/approving', [DashboardController::class, 'approvPage']);
-    Route::get('/dashboard/approving/{id}', [DashboardController::class, 'confirmed'])->middleware('CheckUserAccess');
-    Route::put('/dashboard/approving/{id}', [DashboardController::class, 'updateConfirmed'])->middleware('CheckUserAccess');
 
 
+        Route::get('/dashboard/approving', [DashboardController::class, 'approvPage']);
+        Route::get('/dashboard/approving/{id}', [DashboardController::class, 'confirmed'])->middleware('CheckUserAccess');
+        Route::put('/dashboard/approving/{id}', [DashboardController::class, 'updateConfirmed'])->middleware('CheckUserAccess');
+
+        Route::post('/dashboard/materials/create', [DashboardController::class, 'materialsCreate']);
+    
+        Route::get('/dashboard/materials/modify', [DashboardController::class, 'materialsModifyPage']);
+        Route::get('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdatePage']);
+        Route::put('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdate']);
+
+        Route::get('/dashboard/meeting/list', [MeetingController::class, 'index']);
+    });
 
 
     //MATERIAL FULL
     // ---------------------------------------------------------------
     Route::get('/dashboard/materials/list', [DashboardController::class, 'materialsPage']);
     Route::get('/dashboard/materials/list/{id}', [DashboardController::class, 'materialsDetail']);
-    Route::get('/dashboard/materials/create', [DashboardController::class, 'materialsCreatePage']);
-    Route::post('/dashboard/materials/create', [DashboardController::class, 'materialsCreate']);
 
-    Route::get('/dashboard/materials/modify', [DashboardController::class, 'materialsModifyPage']);
-    Route::get('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdatePage']);
-    Route::put('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdate']);
 
 
 

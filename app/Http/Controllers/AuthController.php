@@ -42,6 +42,8 @@ class AuthController extends Controller
         $hashPassword = Hash::make($request->password);
         $request['password'] = $hashPassword;
 
+        $request['profile_photo_path'] = "face7.jpg";
+
         $user = User::create($request->all());
         //proses verifikasi email
         event(new Registered($user));

@@ -21,10 +21,15 @@ class Grade extends Model
     {
         return $this->belongsTo(Program::class);
     }
-
     public function user()
     {
         return $this->hasMany(User::class, 'grade_id');
     }
+    public function meeting()
+    {
+        return $this->hasMany(Meeting::class, 'grade_id');
+    }
+
+    
 
 }

@@ -7,16 +7,22 @@ use App\Models\Grade;
 use App\Models\Program;
 use App\Models\Material;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 class DashboardController extends Controller
 {
     public function index(){
+        // if(Auth::user()->role_id == 2){
+        //     return view ('dashboard.students', [
+        //         'users' => $users
+        //     ]);
+        // }
         $users = User::latest()
         ->where('role_id', 2)
         ->where('status', 'active')
-        ->whereNotNull('program_id')
+        // ->whereNotNull('program_id')
         ->paginate(7);
 
         return view ('dashboard.students', [
@@ -30,7 +36,7 @@ class DashboardController extends Controller
         $users = User::where('fullname', 'LIKE', '%'.$fullname.'%')
                     ->where('role_id', 2)
                     ->where('status', 'active')
-                    ->whereNotNull('program_id')
+                    // ->whereNotNull('program_id')
                     ->paginate(7);
         return view('dashboard.students', [
             'users' => $users
@@ -75,7 +81,7 @@ class DashboardController extends Controller
     public function modifPage(){
         $users = User::where('role_id', 2)
                 ->where('status', 'active')
-                ->whereNotNull('program_id')
+                ->whereNotNull('grade_id')
                 ->get();
 
         return view('dashboard.students-modify', [
@@ -84,12 +90,12 @@ class DashboardController extends Controller
     }
 
     public function modif($id){
-        $programs = Program::all();
+        $grades = Grade::all();
         // $programs = Program::pluck('name');
         $user = User::findOrFail($id);
         return view('dashboard.students-datamodif', [
             'user' => $user,
-            'programs' => $programs,
+            'grades' => $grades,
         ]);
     }
 
@@ -129,7 +135,7 @@ class DashboardController extends Controller
             'phone' => $request->phone,
             'address' => $request->address,
             'evidence' => $request->evidence,
-            'program_id' => $request->program_id,
+            'grade_id' => $request->grade_id,
 
 
 
@@ -180,7 +186,7 @@ class DashboardController extends Controller
 
     public function approvPage(){
         $users = User::where('status', 'in progress')
-            ->where('program_id', null)
+            ->where('grade_id', null)
             // ->where('role_id', 2)
             ->get();
 
@@ -191,13 +197,13 @@ class DashboardController extends Controller
 
     public function confirmed($id)
     {
-        $programs = Program::all();
+        
         $grades = Grade::all();
         // $programs = Program::pluck('name');
         $user = User::findOrFail($id);
         return view('dashboard.students-confirmed', [
             'user' => $user,
-            'programs' => $programs,
+            
             'grades' => $grades
         ]);
     }

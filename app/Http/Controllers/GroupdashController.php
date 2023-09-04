@@ -2,20 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Grade;
+use App\Models\Program;
+use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class GroupdashController extends Controller
 {
     public function index(){
-        // $grades = Grade::with('user')->get();
+        
+        $programs = Program::all();
         $grades = Grade::all();
+        
+        $otherusers = User::where('grade_id', Auth::user()->grade_id)
+        // ->where('id', '!=', Auth::user()->id)
+        ->get();
+        
 
         // $users = $grades->user;
         return view('dashboard.group.groupdash', 
-    ['grades' => $grades]);
-    }
+        ['grades' => $grades, 
+        'programs' => $programs,
+        'otherusers' => $otherusers
+    
+        ]);
+        }
+
+        
 
     public function groupCreatePage(){
         $groups = Grade::all();
@@ -29,6 +45,7 @@ class GroupdashController extends Controller
             'name' => 'required|unique:grades',
             'class_meeting' => 'required',
         ]);
+        $request['name'] = Str::upper($request->name);
         Grade::create($request->all());
 
 
@@ -88,12 +105,12 @@ class GroupdashController extends Controller
             $group->delete();
 
             Session::flash('status', 'Success');
-            Session::flash('message', 'Successfully Deleted Account');
+            Session::flash('message', 'Successfully Deleted Group');
 
-            return redirect('/dashboard/group/modify');
+            return redirect('/dashboard/group/list');
 
         } else{
-            return redirect('/dashboard/group/modify');
+            return redirect('/dashboard/group/list');
 
             Session::flash('status', 'Success');
             Session::flash('message', 'Group Dissapeared');

@@ -43,7 +43,7 @@
           <div class="form-group row">
             <label for="aboutme" class="col-sm-3 col-form-label">About Me</label>
             <div class="col-sm-9">
-              <input type="text" class="form-control" id="aboutme" name="aboutme" placeholder="- - kosongkan jika ingin memakai default - - Default : I am a person with more than 10 years experiences in hospitality industry. Able to prioritize safety in the Restaurants, Bars and Kitchens while upholding high standards for the whole operations. Takes direction well and can work under extreme pressure while maintaining a positive attitude. Passionate about pursuing a career in the hospitality industry.">
+              <input type="text" class="form-control" id="aboutme" name="aboutme" placeholder="">
             </div>
           </div>
 

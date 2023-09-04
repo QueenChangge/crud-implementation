@@ -3,8 +3,10 @@
       <a class="sidebar-brand brand-logo" href="/"><h1 style="color: white">VIRGINIA</h1></a>
       <a class="sidebar-brand brand-logo-mini" href="/"><h1 style="color: white">V</h1></a>
     </div>
+    
     <ul class="nav">
-       <li class="nav-item menu-items" style="margin-top:20px">
+      @if (Auth::user()->role_id != 2)
+      <li class="nav-item menu-items" style="margin-top:20px">
         <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
           <span class="menu-icon">
             <i class="mdi mdi-account-multiple"></i>
@@ -16,20 +18,6 @@
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a  style="color: #6c757d" href="/dashboard/students/list">List</a></li>
             <li class="nav-item"> <a  style="color: #6c757d" href="/dashboard/approving">Approving</a></li>
-          </ul>
-        </div>
-      </li>
-      <li class="nav-item menu-items" style="margin-top:20px">
-        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
-          <span class="menu-icon">
-            <i class="mdi mdi-account-multiple"></i>
-          </span>
-          <span class="menu-title">Group</span>
-          <i class="menu-arrow"></i>
-        </a>
-        <div class="collapse" id="ui-basic">
-          <ul class="nav flex-column sub-menu">
-            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/group/list">List</a></li>
           </ul>
         </div>
       </li>
@@ -52,6 +40,65 @@
           <span class="menu-icon">
             <i class="mdi mdi-account-multiple"></i>
           </span>
+          <span class="menu-title">Class</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/group/list">List</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item menu-items" style="margin-top:20px">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-multiple"></i>
+          </span>
+          <span class="menu-title">Meeting</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/meeting/list">List</a></li>
+          </ul>
+        </div>
+      </li>
+
+      @else
+      <li class="nav-item menu-items" style="margin-top:20px">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-multiple"></i>
+          </span>
+          <span class="menu-title">Materials</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/materials/list">List</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="nav-item menu-items" style="margin-top:20px">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-multiple"></i>
+          </span>
+          <span class="menu-title">Class</span>
+          <i class="menu-arrow"></i>
+        </a>
+        <div class="collapse" id="ui-basic">
+          <ul class="nav flex-column sub-menu">
+            <li class="nav-item"> <a style="color: #6c757d" href="/dashboard/group/list">List</a></li>
+          </ul>
+        </div>
+      </li>
+      
+      <li class="nav-item menu-items" style="margin-top:20px">
+        <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+          <span class="menu-icon">
+            <i class="mdi mdi-account-multiple"></i>
+          </span>
           <span class="menu-title">CV</span>
           <i class="menu-arrow"></i>
         </a>
@@ -66,6 +113,14 @@
         </div>
         
       </li>
+      @endif
+      
+      
+      
+       
+      
+      
+      
       {{-- <li class="nav-item menu-items">
         <a class="nav-link" href="/dashboard/materials">
           <span class="menu-icon">

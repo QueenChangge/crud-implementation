@@ -67,9 +67,9 @@
                   <td scope="row">{{$loop->iteration}}</td>
                   <td>{{$user->fullname}}</td>
                   <td>{{$user->phone}}</td>
-                  @if ($user->grade && $user->program)
+                  @if ($user->grade_id)
                     <td>{{$user->grade->name}}</td>
-                    <td>{{$user->program->name}}</td>
+                    <td>{{$user->grade->program->name}}</td>
                   @else
                     <td>-</td>
                     <td>-</td>

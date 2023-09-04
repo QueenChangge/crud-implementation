@@ -17,7 +17,7 @@
               </tr>
             </thead>
             <tbody>
-            @foreach ($group->program->user as $user)
+            @foreach ($group->user as $user)
             <tr>
                 <td> {{$loop->iteration}} </td>
                 <td> {{$user->fullname}} </td>

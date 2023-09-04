@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Civi;
+use App\Models\Grade;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
@@ -58,13 +59,15 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->belongsTo(Program::class);
     }
 
-    public function grade()
-    {
-        return $this->belongsTo(Grade::class);
-    }
-
     public function civi()
     {
         return $this->hasOne(Civi::class, 'user_id');
     }
+
+    public function grade()
+    {
+        return $this->belongsTo(Grade::class);
+    } 
+
+    
 }

@@ -1,3 +1,5 @@
+
+
 @extends('dashboard.full')
 
 @section('isian')
@@ -10,29 +12,21 @@
         <form class="forms-sample" method="POST" action="/dashboard/approving/{{$user->id}}">
         @csrf
         @method('PUT')
-          <div class="form-group">
+          {{-- <div class="form-group">
             <label for="program_id">Program</label>
             <select class="form-control" id="program_id" name="program_id" value="{old('program_id')}">
               <option selected disabled>Choose program</option>
-              {{-- @foreach ($programs as $program)
-                  <option value="{{$program->id}}">{{$program->name}}</option>
-              @endforeach --}}
               @foreach ($programs as $program)
                   <option value="{{$program->id}}">{{$program->name}}</option>
               @endforeach
             </select>
-          </div>
+          </div> --}}
           <div class="form-group">
             <label for="grade_id">Grade</label>
             <select class="form-control" id="grade_id" name="grade_id" value="{old('grade_id')}">
               <option selected disabled>Choose group</option>
-              {{-- @foreach ($grades as $grade)
-                  <option value="{{$grade->id}}">{{$grade->name}}</option>
-              @endforeach --}}
-              @foreach ($programs as $program)
-                  @foreach ($program->grade as $grade)
+              @foreach ($grades as $grade)
                     <option value="{{$grade->id}}">{{$grade->name}}</option>
-                  @endforeach
               @endforeach
               
             </select>
@@ -49,3 +43,4 @@
   </div>
 
 @endsection
+

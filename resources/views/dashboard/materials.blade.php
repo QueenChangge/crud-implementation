@@ -12,14 +12,16 @@
           <div class="col-5 col-sm-7 col-xl-8 p-0">
             <h2 class="mb-1 mb-sm-0">MATERIALS</h2>
           </div>
-          <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
-            <span>
-              <a href="/dashboard/materials/create" class="btn btn-outline-light btn-rounded get-started-btn">Create</a>
-            </span>
-            <span>
-              <a href="/dashboard/materials/modify" class="btn btn-outline-light btn-rounded get-started-btn">Modify</a>
-            </span>
-          </div>
+          @if (Auth::user()->role_id != 2)
+            <div class="col-3 col-sm-2 col-xl-2 pl-0 text-center">
+              <span>
+                <a href="/dashboard/materials/create" class="btn btn-outline-light btn-rounded get-started-btn">Create</a>
+              </span>
+              <span>
+                <a href="/dashboard/materials/modify" class="btn btn-outline-light btn-rounded get-started-btn">Modify</a>
+              </span>
+            </div>
+          @endif
         </div>
       </div>
     </div>
