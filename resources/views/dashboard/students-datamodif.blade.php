@@ -41,7 +41,7 @@
             <label for="grade_id">Grade</label>
             <select class="form-control" id="grade_id" name="grade_id" value="{{old('grade_id', $user->grade_id)}}">
               @foreach ($grades as $grade)
-                  <option value="{{$grade->id}}" @if(old('grade_id', $user->grade_id) == $grade->id) selected @endif">{{$grade->name}}</option>
+                  <option value="{{$grade->id}}" @if(old('grade_id', $user->grade_id) == $grade->id) selected @endif>{{$grade->name}}</option>
               @endforeach
             </select>
           </div>

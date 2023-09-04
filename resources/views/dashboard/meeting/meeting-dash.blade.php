@@ -33,6 +33,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Date</th>
                   <th scope="col">Time</th>
+                  {{-- <th scope="col">Time Finished</th> --}}
                   <th scope="col">Title</th>
                   <th scope="col">Class</th>
                   {{-- <th scope="col">Class Meeting</th> --}}
@@ -46,6 +47,7 @@
                     <td scope="row">{{$loop->iteration}}</td>
                     <td scope="row">{{$meet ? $meet->date : "-"}}</td>
                     <td scope="row">{{$meet ? $meet->description : "-"}}</td>
+                    {{-- <td scope="row">{{session('timefinished')}}</td> --}}
                     <td scope="row">{{$meet ? $meet->title : "-"}}</td>
                     <td scope="row">{{$meet->grade ? $meet->grade->name : "-"}}</td>
                     
@@ -58,13 +60,13 @@
                     @endforeach --}}
                     {{-- <td>{{$grade->user->count()}}</td> --}}
                     <td>
-                      <a href="/dashboard/group/modify/edit/{{$grade->id}}" type="button" class="btn btn-warning btn-icon-text mb-2">
+                      <a href="/dashboard/meeting/edit/{{$meet->id}}" type="button" class="btn btn-warning btn-icon-text mb-2">
                         <i class="mdi mdi-reload btn-icon-prepend"></i> Edit </a>
                     </td>
                     
 
                     <td>
-                        <form action="/dashboard/group/modify/delete/{{$grade->id}}" method="POST">
+                        <form action="/dashboard/meeting/delete/{{$meet->id}}" method="POST">
                           @csrf
                           @method('DELETE')
                           <button type="submit" class="btn btn-danger btn-icon-text">
@@ -108,9 +110,13 @@
               </div>
             </div>
             <div class="form-group row">
-              <label for="class_meeting" class="col-sm-3 col-form-label">Class Meeting</label>
+              <label for="grade_id" class="col-sm-3 col-form-label">Class</label>
               <div class="col-sm-9">
-                <input type="number" class="form-control" id="class_meeting" name="class_meeting" placeholder="" autocomplete="new-password">
+                <select class="form-control" id="grade_id" name="grade_id">
+                  @foreach ($grades as $grade)
+                      <option value="{{$grade->id}}">{{$grade->name}}</option>
+                  @endforeach
+                </select>
               </div>
             </div>
         

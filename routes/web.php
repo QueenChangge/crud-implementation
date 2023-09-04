@@ -85,6 +85,10 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::put('/dashboard/materials/modify/edit/{id}', [DashboardController::class, 'materialsUpdate']);
 
         Route::get('/dashboard/meeting/list', [MeetingController::class, 'index']);
+        Route::post('/dashboard/meeting/create', [MeetingController::class, 'createMeet']);
+        Route::get('/dashboard/meeting/edit/{id}', [MeetingController::class, 'modifyMeet']);
+        Route::put('/dashboard/meeting/edit/{id}', [MeetingController::class, 'updateMeet']);
+        Route::delete('/dashboard/meeting/delete/{id}', [MeetingController::class, 'deleteMeet']);
     });
 
 
