@@ -89,6 +89,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/dashboard/meeting/edit/{id}', [MeetingController::class, 'modifyMeet']);
         Route::put('/dashboard/meeting/edit/{id}', [MeetingController::class, 'updateMeet']);
         Route::delete('/dashboard/meeting/delete/{id}', [MeetingController::class, 'deleteMeet']);
+
+        Route::get('/dashboard/meeting/absence/{id}', [MeetingController::class, 'getAbsence']);
+        Route::post('/dashboard/meeting/absence/create', [MeetingController::class, 'storeAbsence']);
     });
 
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use App\Models\Grade;
+use App\Models\Absence;
 use App\Models\Meeting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -116,5 +118,46 @@ class MeetingController extends Controller
             Session::flash('status', 'Success');
             Session::flash('message', 'meeting Dissapeared');
         }
+    }
+
+
+
+
+    // ===================================================================
+    public function getAbsence($id)
+    {
+        $meeting = Meeting::findOrFail($id);
+       
+        return view('dashboard.meeting.meeting-absence', [
+            'meeting' => $meeting,
+            
+        ]);
+    }
+
+    public function storeAbsence(Request $request)
+    {
+        // Validasi data jika diperlukan
+        $request->validate([
+            'user_id' => 'required|array',
+            'meeting_id' => 'required|array',
+        ]);
+
+        // Loop melalui data yang dikirimkan dari formulir
+        foreach ($request->user_id as $key => $user_id) {
+            $meeting_id = $request->meeting_id[$key];
+
+            // Lakukan apa yang Anda butuhkan dengan $user_id dan $meeting_id,
+            // seperti menyimpannya ke dalam database atau melakukan tindakan lain
+            Absence::create([
+                'user_id' => $user_id,
+                'meeting_id' => $meeting_id,
+                'status' => $request->status[$key], // Anda juga dapat menyimpan status dari formulir
+            ]);
+        }
+
+        // Redirect atau berikan respon sukses jika diperlukan
+        return redirect('/dashboard/meeting/list');
+        Session::flash('status', 'Success');
+        Session::flash('message', 'Data absensi berhasil disimpan');
     }
 }

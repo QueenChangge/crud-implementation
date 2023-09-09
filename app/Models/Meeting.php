@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Grade;
+use App\Models\Absence;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -23,5 +24,10 @@ class Meeting extends Model
     public function grade()
     {
         return $this->belongsTo(Grade::class);
+    }
+
+    public function absence()
+    {
+        return $this->hasMany(Absence::class, 'meeting_id');
     }
 }

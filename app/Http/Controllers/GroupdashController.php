@@ -120,8 +120,14 @@ class GroupdashController extends Controller
 
     public function groupDetail($id){
         $group = Grade::findOrFail($id);
+
+        $specials = Grade::with('meeting.absence.user')->get();
+
+
+        
         return view('dashboard.group.groupdetail', [
-            'group' => $group
+            'group' => $group,
+            'specials' => $specials
         ]);
     }
 }

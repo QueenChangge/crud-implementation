@@ -36,6 +36,7 @@
                   {{-- <th scope="col">Time Finished</th> --}}
                   <th scope="col">Title</th>
                   <th scope="col">Class</th>
+                  <th scope="col">Absence</th>
                   {{-- <th scope="col">Class Meeting</th> --}}
                   <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
@@ -50,6 +51,7 @@
                     {{-- <td scope="row">{{session('timefinished')}}</td> --}}
                     <td scope="row">{{$meet ? $meet->title : "-"}}</td>
                     <td scope="row">{{$meet->grade ? $meet->grade->name : "-"}}</td>
+                    <td scope="row"><a href="/dashboard/meeting/absence/{{$meet->id}}">Fill</a></td>
                     
 
                     {{-- @foreach ($grade->program->user as $user)
