@@ -12,20 +12,20 @@ class LandingController extends Controller
 
         $request->session()->flush();
 
-        return view('landing-page', [
+        return view('landing-page.landing-page', [
             'programs' => $programs
         ]);
     }
 
     public function programs(){
         $programs = Program::all();
-        return view('landing-programs', [
+        return view('landing-page.contents.landing-programs', [
             'programs' => $programs
         ]);
     }
 
     public function about(){
-        return view('landing-about');
+        return view('landing-page.contents.landing-about');
     }
 
     

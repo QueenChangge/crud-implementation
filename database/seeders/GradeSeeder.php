@@ -13,17 +13,14 @@ class GradeSeeder extends Seeder
      */
     public function run(): void
     {
-        Grade::factory()->create([
-            'name' => 'A1',
-            'class-meeting' => '12',
-        ]);
-        Grade::factory()->create([
-            'name' => 'A2',
-            'class-meeting' => '12',
-        ]);
-        Grade::factory()->create([
-            'name' => 'A3',
-            'class-meeting' => '12',
-        ]);
+        $grades = [
+            ['name' => 'A1', 'class-meeting' => '12', 'program_id'=>1],
+            ['name' => 'A2', 'class-meeting' => '12', 'program_id'=>2],
+            ['name' => 'A3', 'class-meeting' => '12', 'program_id'=>1],
+        ];
+
+        foreach ($grades as $grade) {
+            Grade::factory()->create($grade);
+        }
     }
 }

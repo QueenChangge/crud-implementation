@@ -13,27 +13,15 @@ class ProgramSeeder extends Seeder
      */
     public function run(): void
     {
-        Program::factory()->create([
-            'name' => 'Basic',
-            'description' => 'qwertyuioasdfghjkzxcvbnm',
-            'price' => 20000,
-            'meeting' => 'wertyu',
-            'icon' => 'qwertyui'
-        ]);
-        Program::factory()->create([
-            'name' => 'Advance',
-            'description' => 'qwertyuioasdfghjkzxcvbnm',
-            'price' => 20000,
-            'meeting' => 'wertyu',
-            'icon' => 'qwertyui'
-        ]);
-        Program::factory()->create([
-            'name' => 'High',
-            'description' => 'qwertyuioasdfghjkzxcvbnm',
-            'price' => 20000,
-            'meeting' => 'wertyu',
-            'icon' => 'qwertyui'
-        ]);
+        $programs = [
+            ['name' => 'Basic', 'description' => 'qwertyuioasdfghjkzxcvbnm', 'price' => 20000, 'meeting' => 'wertyu', 'icon' => 'qwertyui'],
+            ['name' => 'Advance', 'description' => 'qwertyuioasdfghjkzxcvbnm', 'price' => 20000, 'meeting' => 'wertyu', 'icon' => 'qwertyui'],
+            ['name' => 'High', 'description' => 'qwertyuioasdfghjkzxcvbnm', 'price' => 20000, 'meeting' => 'wertyu', 'icon' => 'qwertyui'],
+        ];
+
+        foreach ($programs as $program) {
+            Program::factory()->create($program);
+        }
     }
 
 }

@@ -1,0 +1,17 @@
+@import "tailwindcss";
+@source "../views";
+
+@theme {
+    --color-purple: #A0AEFF;
+    --color-disabled: #F4F4F4;
+    --breakpoint-xs: 50px;
+}
+.hide-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.hide-scrollbar {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}

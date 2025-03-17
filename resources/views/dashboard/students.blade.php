@@ -69,7 +69,7 @@
                   <td>{{$user->phone}}</td>
                   @if ($user->grade_id)
                     <td>{{$user->grade->name}}</td>
-                    <td>{{$user->grade->program->name}}</td>
+                    {{-- <td>{{$user->grade->program->name}}</td> --}}
                   @else
                     <td>-</td>
                     <td>-</td>

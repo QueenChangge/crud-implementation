@@ -3,13 +3,16 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CVController;
 use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\dashboard\MainController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\MeetingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\GroupdashController;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\LoginController as ControllersLoginController;
 
 
 /*
@@ -29,14 +32,13 @@ Route::get('/about-us', [LandingController::class, 'about']);
 
 
 // AUTHENTICATION
-Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'authenticating'])->middleware('guest');
+Route::get('/login', [LoginController::class, 'index'])->name('auth.login')->middleware('guest');
+Route::post('/login', [LoginController::class, 'login'])->name('auth.login.login')->middleware('guest');
 
-Route::get('/register', [AuthController::class, 'register'])->middleware('guest');
-Route::post('/register', [AuthController::class, 'store'])->middleware('guest');
+Route::get('/register', [LoginController::class, 'register'])->middleware('guest');
+Route::post('/register', [LoginController::class, 'store'])->middleware('guest');
 
-Route::get('/logout', [AuthController::class, 'logout'])->middleware('auth');
-
+Route::get('/logout', [LoginController::class, 'logout'])->middleware('auth');
 
 // PROSES PENGIRIMAN EMAIL VERIFIKASI
     //jika user mulai register akan diarahkan ke /email/verify
@@ -60,6 +62,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
     
     Route::middleware('OnlyAdmin')->group(function () {
     //STUDENT FULL
+        Route::get('/dashboard', [MainController::class, 'index'])->name('dashboard.index');
+        Route::get('/dashboard/search', [MainController::class, 'search'])->name('dashboard.search');
         Route::get('/dashboard/students/list', [DashboardController::class, 'index']);
         Route::get('/dashboard/students/filter', [DashboardController::class, 'filterIndex']);
 

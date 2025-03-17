@@ -23,7 +23,10 @@ return new class extends Migration
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropForeign(['grade_id']);
+            // Menghapus foreign key constraint dengan nama spesifik
+            $table->dropForeign('users_grade_id_foreign');
+
+            // Menghapus kolom grade_id
             $table->dropColumn('grade_id');
         });
     }

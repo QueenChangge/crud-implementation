@@ -57,7 +57,7 @@
                         <td>{{$user->count()}}</td>
                     @endforeach --}}
                     {{-- <td>{{$grade->user->count()}}</td> --}}
-                    <td>{{$grade->program->name}}</td>
+                    {{-- <td>{{$grade->program->name}}</td> --}}
                     <td>
                       <a href="/dashboard/group/modify/edit/{{$grade->id}}" type="button" class="btn btn-warning btn-icon-text mb-2">
                         <i class="mdi mdi-reload btn-icon-prepend"></i> Edit </a>
